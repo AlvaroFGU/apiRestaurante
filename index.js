@@ -23,53 +23,53 @@ const writeData = (data) => {
 };
 
 app.get("/", (req, res) => {
-  res.send("Welcome to my first API with Node js!");
+  res.send("Welcome to my restaurant API with Node.js!");
 });
 
-app.get("/books", (req, res) => {
+app.get("/restaurants", (req, res) => {
   const data = readData();
-  res.json(data.books);
+  res.json(data.restaurants);
 });
 
-app.get("/books/:id", (req, res) => {
+app.get("/restaurants/:id", (req, res) => {
   const data = readData();
   const id = parseInt(req.params.id);
-  const book = data.books.find((book) => book.id === id);
-  res.json(book);
+  const restaurant = data.restaurants.find((restaurant) => restaurant.id === id);
+  res.json(restaurant);
 });
 
-app.post("/books", (req, res) => {
+app.post("/restaurants", (req, res) => {
   const data = readData();
   const body = req.body;
-  const newBook = {
-    id: data.books.length + 1,
+  const newRestaurant = {
+    id: data.restaurants.length + 1,
     ...body,
   };
-  data.books.push(newBook);
+  data.restaurants.push(newRestaurant);
   writeData(data);
-  res.json(newBook);
+  res.json(newRestaurant);
 });
 
-app.put("/books/:id", (req, res) => {
+app.put("/restaurants/:id", (req, res) => {
   const data = readData();
   const body = req.body;
   const id = parseInt(req.params.id);
-  const bookIndex = data.books.findIndex((book) => book.id === id);
-  data.books[bookIndex] = {
-    ...data.books[bookIndex],
+  const restaurantIndex = data.restaurants.findIndex((restaurant) => restaurant.id === id);
+  data.restaurants[restaurantIndex] = {
+    ...data.restaurants[restaurantIndex],
     ...body,
   };
   writeData(data);
-  res.json({ message: "Book updated successfully" });
+  res.json({ message: "Restaurant updated successfully" });
 });
 
-app.delete("/books/:id", (req, res) => {
+app.delete("/restaurants/:id", (req, res) => {
   const data = readData();
   const id = parseInt(req.params.id);
-  const bookIndex = data.books.findIndex((book) => book.id === id);
-  data.books.splice(bookIndex, 1);
+  const restaurantIndex = data.restaurants.findIndex((restaurant) => restaurant.id === id);
+  data.restaurants.splice(restaurantIndex, 1);
   writeData(data);
-  res.json({ message: "Book deleted successfully" });
+  res.json({ message: "Restaurant deleted successfully" });
 });
 
 app.listen(3000, () => {
