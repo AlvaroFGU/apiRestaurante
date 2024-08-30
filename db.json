@@ -1,187 +1,43 @@
 {
-"restaurants":
-
-[
-   {
-     "nombre": "La Parrilla",
-     "sucursal": "Centro",
-     "platos": [
-       {
-         "nombre": "Bife de Chorizo",
-         "precio": 20.99,
-         "descripcion": "Corte de carne a la parrilla con papas fritas",
-         "porciones": 1
-       },
-       {
-         "nombre": "Ensalada Mixta",
-         "precio": 8.50,
-         "descripcion": "Ensalada fresca de vegetales variados",
-         "porciones": 1
-       }
-     ]
-   },
-   {
-     "nombre": "Sushi House",
-     "sucursal": "Norte",
-     "platos": [
-       {
-         "nombre": "Sushi Roll",
-         "precio": 15.99,
-         "descripcion": "Rollo de sushi con salmón y aguacate",
-         "porciones": 8
-       },
-       {
-         "nombre": "Tempura",
-         "precio": 12.50,
-         "descripcion": "Vegetales y camarones empanizados",
-         "porciones": 1
-       }
-     ]
-   },
-   {
-     "nombre": "Pizzeria Bella",
-     "sucursal": "Sur",
-     "platos": [
-       {
-         "nombre": "Pizza Margarita",
-         "precio": 9.99,
-         "descripcion": "Pizza con salsa de tomate, mozzarella y albahaca",
-         "porciones": 8
-       },
-       {
-         "nombre": "Calzone",
-         "precio": 11.99,
-         "descripcion": "Pizza doblada con queso y pepperoni",
-         "porciones": 1
-       }
-     ]
-   },
-   {
-     "nombre": "Taco Loco",
-     "sucursal": "Este",
-     "platos": [
-       {
-         "nombre": "Taco de Carne Asada",
-         "precio": 3.50,
-         "descripcion": "Taco con carne asada, cebolla y cilantro",
-         "porciones": 1
-       },
-       {
-         "nombre": "Quesadilla",
-         "precio": 5.99,
-         "descripcion": "Tortilla rellena de queso fundido",
-         "porciones": 1
-       }
-     ]
-   },
-   {
-     "nombre": "Café del Sol",
-     "sucursal": "Oeste",
-     "platos": [
-       {
-         "nombre": "Café Americano",
-         "precio": 2.50,
-         "descripcion": "Café negro sin azúcar",
-         "porciones": 1
-       },
-       {
-         "nombre": "Croissant",
-         "precio": 3.00,
-         "descripcion": "Croissant recién horneado",
-         "porciones": 1
-       }
-     ]
-   },
-   {
-     "nombre": "Bistro Francés",
-     "sucursal": "Centro",
-     "platos": [
-       {
-         "nombre": "Quiche Lorraine",
-         "precio": 7.50,
-         "descripcion": "Tarta salada con bacon y queso",
-         "porciones": 1
-       },
-       {
-         "nombre": "Crème Brûlée",
-         "precio": 6.00,
-         "descripcion": "Postre de crema con caramelo crujiente",
-         "porciones": 1
-       }
-     ]
-   },
-   {
-     "nombre": "Ramen King",
-     "sucursal": "Norte",
-     "platos": [
-       {
-         "nombre": "Tonkotsu Ramen",
-         "precio": 13.99,
-         "descripcion": "Ramen con caldo de cerdo y huevo",
-         "porciones": 1
-       },
-       {
-         "nombre": "Gyozas",
-         "precio": 7.99,
-         "descripcion": "Dumplings rellenos de carne de cerdo",
-         "porciones": 6
-       }
-     ]
-   },
-   {
-     "nombre": "BBQ House",
-     "sucursal": "Sur",
-     "platos": [
-       {
-         "nombre": "Costillas BBQ",
-         "precio": 18.99,
-         "descripcion": "Costillas de cerdo a la barbacoa",
-         "porciones": 1
-       },
-       {
-         "nombre": "Mac and Cheese",
-         "precio": 5.50,
-         "descripcion": "Macarrones con queso gratinado",
-         "porciones": 1
-       }
-     ]
-   },
-   {
-     "nombre": "Veggie Delight",
-     "sucursal": "Este",
-     "platos": [
-       {
-         "nombre": "Hamburguesa Vegana",
-         "precio": 10.99,
-         "descripcion": "Hamburguesa de garbanzos con lechuga y tomate",
-         "porciones": 1
-       },
-       {
-         "nombre": "Batido de Frutas",
-         "precio": 4.50,
-         "descripcion": "Batido de frutas frescas y yogurt",
-         "porciones": 1
-       }
-     ]
-   },
-   {
-     "nombre": "El Marisco",
-     "sucursal": "Oeste",
-     "platos": [
-       {
-         "nombre": "Paella de Mariscos",
-         "precio": 21.99,
-         "descripcion": "Paella con arroz y mariscos frescos",
-         "porciones": 1
-       },
-       {
-         "nombre": "Ceviche",
-         "precio": 14.99,
-         "descripcion": "Pescado marinado en jugo de limón con cebolla y cilantro",
-         "porciones": 1
-       }
-     ]
-   }
- ]
-}
+   "restaurants": [
+     {
+       "id": 1,
+       "nombre": "La Parrilla",
+       "sucursal": "Centro",
+       "platos": [
+         {
+           "nombre": "Bife de Chorizo",
+           "precio": 20.99,
+           "descripcion": "Corte de carne a la parrilla con papas fritas",
+           "porciones": 1
+         },
+         {
+           "nombre": "Ensalada Mixta",
+           "precio": 8.50,
+           "descripcion": "Ensalada fresca de vegetales variados",
+           "porciones": 1
+         }
+       ]
+     },
+     {
+       "id": 2,
+       "nombre": "Sushi House",
+       "sucursal": "Norte",
+       "platos": [
+         {
+           "nombre": "Sushi Roll",
+           "precio": 15.99,
+           "descripcion": "Rollo de sushi con salmón y aguacate",
+           "porciones": 8
+         },
+         {
+           "nombre": "Tempura",
+           "precio": 12.50,
+           "descripcion": "Vegetales y camarones empanizados",
+           "porciones": 1
+         }
+       ]
+     }
+   ]
+ }
  

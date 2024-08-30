@@ -7,18 +7,19 @@ app.use(bodyParser.json());
 
 const readData = () => {
   try {
-    const data = fs.readFileSync("./db.json");
+    const data = fs.readFileSync("./db.json", "utf8");
     return JSON.parse(data);
   } catch (error) {
-    console.log(error);
+    console.error("Error reading JSON file:", error.message);
+    return { restaurants: [] }; // Devuelve un array vacío si hay un error
   }
 };
 
 const writeData = (data) => {
   try {
-    fs.writeFileSync("./db.json", JSON.stringify(data));
+    fs.writeFileSync("./db.json", JSON.stringify(data, null, 2));
   } catch (error) {
-    console.log(error);
+    console.error("Error writing JSON file:", error.message);
   }
 };
 
@@ -35,7 +36,11 @@ app.get("/restaurants/:id", (req, res) => {
   const data = readData();
   const id = parseInt(req.params.id);
   const restaurant = data.restaurants.find((restaurant) => restaurant.id === id);
-  res.json(restaurant);
+  if (restaurant) {
+    res.json(restaurant);
+  } else {
+    res.status(404).json({ message: "Restaurant not found" });
+  }
 });
 
 app.post("/restaurants", (req, res) => {
@@ -55,21 +60,29 @@ app.put("/restaurants/:id", (req, res) => {
   const body = req.body;
   const id = parseInt(req.params.id);
   const restaurantIndex = data.restaurants.findIndex((restaurant) => restaurant.id === id);
-  data.restaurants[restaurantIndex] = {
-    ...data.restaurants[restaurantIndex],
-    ...body,
-  };
-  writeData(data);
-  res.json({ message: "Restaurant updated successfully" });
+  if (restaurantIndex !== -1) {
+    data.restaurants[restaurantIndex] = {
+      ...data.restaurants[restaurantIndex],
+      ...body,
+    };
+    writeData(data);
+    res.json({ message: "Restaurant updated successfully" });
+  } else {
+    res.status(404).json({ message: "Restaurant not found" });
+  }
 });
 
 app.delete("/restaurants/:id", (req, res) => {
   const data = readData();
   const id = parseInt(req.params.id);
   const restaurantIndex = data.restaurants.findIndex((restaurant) => restaurant.id === id);
-  data.restaurants.splice(restaurantIndex, 1);
-  writeData(data);
-  res.json({ message: "Restaurant deleted successfully" });
+  if (restaurantIndex !== -1) {
+    data.restaurants.splice(restaurantIndex, 1);
+    writeData(data);
+    res.json({ message: "Restaurant deleted successfully" });
+  } else {
+    res.status(404).json({ message: "Restaurant not found" });
+  }
 });
 
 app.listen(3000, () => {
