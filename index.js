@@ -72,6 +72,57 @@ app.put("/restaurants/:id", (req, res) => {
   }
 });
 
+app.put("/restaurants/:id/plato", (req, res) => {
+  const data = readData();
+  const restaurantId = parseInt(req.params.id);
+  const restaurant = data.restaurants.find((restaurant) => restaurant.id === restaurantId);
+
+  if (!restaurant) {
+    return res.status(404).json({ message: "Restaurant not found" });
+  }
+
+  const { nombre, nuevoPrecio, nuevaDescripcion, nuevasPorciones } = req.body;
+
+  const plato = restaurant.platos.find((plato) => plato.nombre === nombre);
+  if (!plato) {
+    return res.status(404).json({ message: "Plato not found" });
+  }
+
+  if (nuevoPrecio) plato.precio = nuevoPrecio;
+  if (nuevaDescripcion) plato.descripcion = nuevaDescripcion;
+  if (nuevasPorciones) plato.porciones = nuevasPorciones;
+
+  writeData(data);
+  res.json({ message: "Plato updated successfully", plato });
+});
+
+app.put("/restaurants/:id/platos/:platoId", (req, res) => {
+  const data = readData();
+  const restaurantId = parseInt(req.params.id);
+  const platoId = parseInt(req.params.platoId);
+  const restaurant = data.restaurants.find((r) => r.id === restaurantId);
+
+  if (!restaurant) {
+    return res.status(404).json({ message: "Restaurant not found" });
+  }
+
+  const dishIndex = restaurant.platos.findIndex((plato) => plato.id === platoId);
+
+  if (dishIndex === -1) {
+    return res.status(404).json({ message: "Dish not found" });
+  }
+
+  // Update the dish
+  restaurant.platos[dishIndex] = {
+    ...restaurant.platos[dishIndex],
+    ...req.body,
+  };
+
+  writeData(data);
+
+  res.json(restaurant.platos[dishIndex]);
+});
+
 app.delete("/restaurants/:id", (req, res) => {
   const data = readData();
   const id = parseInt(req.params.id);
